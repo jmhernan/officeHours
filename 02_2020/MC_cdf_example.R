@@ -1,4 +1,7 @@
-# office hour question 
+ # Peak flow random data generation usinf ecdf distribution
+# original in python 
+# here: https://nbviewer.jupyter.org/urls/mountain-hydrology-research-group.github.io/data-analysis/labs/lab2/Lab%202.2.ipynb
+# J. Hernandez
 
 site_data <- c(
   660,
@@ -41,7 +44,8 @@ site_data <- c(
   579
 )
 
-# 38 records 
+set.seed(99)
+
 # calculate CDF (empirical CDF) of the data
 x_cdf = ecdf(site_data)
 
