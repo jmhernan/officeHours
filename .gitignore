@@ -1,3 +1,4 @@
 credentials.json
 .csv
 data/
+__pycache__/
