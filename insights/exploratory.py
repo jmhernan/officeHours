@@ -8,9 +8,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 this_file_path = os.path.abspath(__file__)
-project_root = os.path.split(this_file_path)[0]
-
-sys.path.append(project_root)
+project_root = os.path.split(os.path.split(this_file_path)[0])[0]
 
 import txt_preprocess as tp
 
@@ -41,3 +39,7 @@ text = text.apply(tp.clean_text)
 
 # Look at top words
 tp.get_top_n_words(text)
+
+# Who
+
+oh_data.Who.value_counts()

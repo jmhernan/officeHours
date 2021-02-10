@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 this_file_path = os.path.abspath(__file__)
-project_root = os.path.split(this_file_path)[0]
+project_root = os.path.split(os.path.split(this_file_path)[0])[0]
 
 path_data = os.path.join(project_root, "data") + '/'
 

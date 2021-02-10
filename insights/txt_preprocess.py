@@ -10,8 +10,6 @@ REPLACE_BY_SPACE_RE = re.compile(r'[/(){}\[\]\|@,;]')
 REM_USC = re.compile(r'(_)')
 SEP_CAPS = re.compile(r'(?<=[a-z])(?=[A-Z])')
 BAD_SYMBOLS_RE = re.compile(r'[\W]')
-REM_GRADE = re.compile(r'(th.(grade|GRADE))')
-REM_CTE = re.compile(r'(\bCTE\b|\dCTE)')
 REPLACE_NUM_RMN = re.compile(r"([0-9]+)|(i[xv]|v?i{0,3})$")
 
 # handle json
@@ -23,20 +21,13 @@ def get_metadata_dict(metadata_file):
 # clean text 
 def clean_text(text):    
     text = REM_USC.sub(' ', text)
-    text = REM_CTE.sub('', text)
     text = SEP_CAPS.sub(' ', text)
     text = str.lower(text)
     text = REPLACE_NUM_RMN.sub('', text)
     text = REPLACE_BY_SPACE_RE.sub(' ', text)
     text = BAD_SYMBOLS_RE.sub(' ', text)
-    text = REM_GRADE.sub('', text) 
     text = ' '.join(word for word in text.split() if len(word)>1)
     return text
-
-def update_abb(text, json_abb):
-    abb_cleanup = {r'\b{}\b'.format(k):v for k, v in json_abb.items()}
-    abb_replace = text.replace(to_replace =abb_cleanup, regex=True)
-    return abb_replace
 
 def get_top_n_words(corpus, n=None):
     """
