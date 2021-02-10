@@ -43,3 +43,12 @@ tp.get_top_n_words(text)
 # Who
 
 oh_data.Who.value_counts()
+
+# check 2019
+
+oh_2019 =   pd.read_csv(os.path.join(path_data,'office_hours_data_2019_20210210.csv'), delimiter = ',')
+
+date_stm_2019 = pd.to_datetime(oh_2019["When"], errors = 'coerce')
+
+
+date_stm_2019.groupby(date_stm_2019.dt.month).count().plot(kind="bar")
