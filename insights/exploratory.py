@@ -6,6 +6,7 @@ import re
 import sys
 from pathlib import Path
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 this_file_path = os.path.abspath(__file__)
 project_root = os.path.split(os.path.split(this_file_path)[0])[0]
@@ -52,3 +53,6 @@ date_stm_2019 = pd.to_datetime(oh_2019["When"], errors = 'coerce')
 
 
 date_stm_2019.groupby(date_stm_2019.dt.month).count().plot(kind="bar")
+
+df_2 = date_stm_2019.groupby(date_stm_2019.dt.month).count()
+
