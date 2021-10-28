@@ -24,3 +24,35 @@ for i in range(len(tokenized_text)):
         print((tokenized_text[i], tokenized_text[i+1]))
 
 
+# Finding first non-repeating character in a string
+string = 'aabbdccfe'
+
+def first_non_repeat(string_input):
+    char_track = {}
+    for i in string_input:
+        if i in char_track:
+            char_track[i] += 1
+        else:
+            char_track[i] = 1
+    for c in string_input:
+        if char_track[c] == 1:
+            return c
+
+
+
+first_non_repeat(string)
+first_non_repeat('tutorialspointfordeveloper')
+first_non_repeat('AABBCC')
+
+pal = 'mad'
+pal_2 = 'mom'
+
+def isPal(string_input):
+    if string_input == string_input[::-1]:
+        return True
+    else:
+        return False
+
+isPal(pal_2)
+
+#######################
